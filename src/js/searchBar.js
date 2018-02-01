@@ -96,8 +96,13 @@ class SearchBar extends Component {
         }
     }
 
+    catchLocationName(e) {
+        this.setState({
+            locationName: e.target.value
+        })
+    }
+
     handleSearchFormSubmit(e) {
-        console.log(e);
         e.preventDefault();
         fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.state.locationName}&key=${apikeys.googleMan}`)
         .then(res => res.json())

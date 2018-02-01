@@ -1,5 +1,8 @@
 import React, {Component} from "react";
-import { clearInterval } from "timers";
+import { clearInterval, setTimeout } from "timers";
+const electron = require('electron');
+const {ipcRenderer} = require('electron');
+
 const version = require('../../package.json').version;
 const settings = require('../../app/settings.js');
 
@@ -18,6 +21,7 @@ class TopBar extends Component {
             presentVersion: version,
             latestVersion: version
         })
+
         this.checkConnection();
         this.checkForUpdates();
         var checkConnection = setInterval(() => {
@@ -32,6 +36,7 @@ class TopBar extends Component {
     componentWillUnmount() {
         clearInterval(this.checkConnection);
         clearInterval(this.checkUpdates);
+        clearTimeout(this.delayChecks);
     }
 
     checkConnection() {
@@ -53,37 +58,39 @@ class TopBar extends Component {
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
-                    if(result.status == '200') {
-
-                        result.sort(function(a, b) {
+                    if(result[0]) {
+                        result.sort((a, b) => {
                             return b.id - a.id
                         });
                         this.setState({
                             latestVersion: result[0].tag_name
-                        }, this.notifyUpdate());
+                        }, this.notifyUpdate);
                     } else {
                         this.setState({
                             latestVersion: this.state.presentVersion
-                        }, this.notifyUpdate());
+                        }, this.notifyUpdate);
                     }
                 },
                 (error) => {
                 }
-            )
-        }
+             )
+    }
 
-        notifyUpdate() {
-            if (this.state.latestVersion != this.state.presentVersion) {
-                this.setState({
-                    updateAvailable: true
-                })
-            } else {
-                this.setState({
-                    updateAvailable: false
-                })
-            }
+    notifyUpdate() {
+        if (this.state.latestVersion != this.state.presentVersion) {
+            this.setState({
+                updateAvailable: true
+            })
+        } else {
+            this.setState({
+                updateAvailable: false
+            })
         }
+    }
+
+    handleUpdateLinkClick() {
+        ipcRenderer.send('updatenLink:clicked', settings.downloadUpdateUrl);
+    }
     
     render () {
         if(!this.state.updateAvailable) {
@@ -92,7 +99,7 @@ class TopBar extends Component {
             )
         } else {
             return (
-                <div className={this.state.className}><i className="icon-cloud"></i> WinAir <a href="https://github.com/Stachuu87/WinAir/releases" target="_blank" className="c-topbar__update">Pobierz nową wersję <i className="icon-file-download"></i></a></div>
+                <div className={this.state.className}><i className="icon-cloud"></i> WinAir <a onClick={this.handleUpdateLinkClick} target="_blank" className="c-topbar__update">Pobierz nową wersję <i className="icon-file-download"></i></a></div>
             )
         }
 
