@@ -26,7 +26,7 @@ You will be notified about every change of major air pollution index.
 
 WinAir is not collecting any data about users, machines etc.
 
-### Updates
+## Updates
 
 When new relase will show up, You will find notification in the top right corner of app window. Simply follow the link, download new release, overwrite in You app path and run it.
 
