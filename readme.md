@@ -1,5 +1,3 @@
-[![GitHub release][https://img.shields.io/github/release/stachuu87/winair.svg]][https://github.com/stachuu87/winair/releases/latest]
-[![Downloads total][https://img.shields.io/github/downloads/stachuu87/winair/total.svg]][https://github.com/stachuu87/winair/releases/latest]
 
 # WinAir
 
@@ -8,7 +6,7 @@ Its a small tray aplication created for Windows running machines.
 
 ## Installation
 
-There is no need to install it at all. Simply download the latest aplication release from<a href="https://api.github.com/Stachuu87/winair/releases" target="_blank"> HERE </a>and save it whereever You want.
+There is no need to install it at all. Simply download the latest aplication release from<a href="https://github.com/Stachuu87/winair/releases" target="_blank"> HERE </a>and save it whereever You want.
 After that just run WinAir.exe file.
 
 **Note:** App automaticly will add itself to system autostart. If You wish to switch it off, just go to `Task Manager` and set the autostart to `Disabled`.
@@ -37,4 +35,4 @@ When new relase will show up, You will find notification in the top right corner
 
 Copyright 2018 Piotr Stanisławski
 
-Licensed under the [Apache License v:2.0][http://www.apache.org/licenses/LICENSE-2.0.html]
+Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" targe="_blank">Apache License v:2.0</a>
