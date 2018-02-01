@@ -1,3 +1,5 @@
+[![GitHub release][badge-github-pre-release]][winair-latest-release]
+[![Downloads total][badge-downloads-total]][winair-latest-release]
 
 # WinAir
 
@@ -36,3 +38,8 @@ When new relase will show up, You will find notification in the top right corner
 Copyright 2018 Piotr Stanisławski
 
 Licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html" targe="_blank">Apache License v:2.0</a>
+
+
+[badge-downloads-total]: https://img.shields.io/github/downloads/stachuu87/winair/total.svg
+[winair-latest-release]: https://github.com/stachuu87/winair/releases/latest
+[badge-github-pre-release]: https://img.shields.io/github/release/stachuu87/winair/all.svg
