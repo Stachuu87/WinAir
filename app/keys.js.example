@@ -1,0 +1,7 @@
+var apikeys = {
+    googleAuto: 'Your google key',
+    googleMan: 'Your google key',  // i use two separate keys because of query limits
+    airly: 'your airly api token'
+}
+
+module.exports = apikeys;

@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    padding: 10px 25px 25px 25px;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.c-topbar {
+    width: 353px;
+    margin-top: -10px;
+    margin-left: -25px;
+}
+
+.c-topbar__status {
+    float:right;
+}
+
+.c-topbar__update {
+    float:right;
+    color:#FF0000;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top:2px;
+}
+
+.c-results__header {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.c-results__location {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    margin: 0;
+}
+
+.c-results__location i {
+    margin: 0 4px 0 10px;
+}
+
+.c-results__measurements {
+    display: flex;
+    margin: 35px 0 25px 0;
+}
+
+.c-results__pm{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.c-results__pmHeader{
+    font-size: 18px;
+}
+
+.c-results__percentageValue {
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.c-results__pm span {
+    text-align: center;
+}
+
+.o-results__message {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 10px 0 0 0;
+}
+
+.c-results__qualityIndex {
+    display: block;
+    text-align: center;
+    font-size: 70px;
+}
+
+.c-searchBar {
+    position: absolute;
+    bottom: 44px;
+    display: flex;
+    justify-content: space-around;
+    width: 325px;
+    left: 12.5px;
+}
+
+.c-searchBar__inputContainer {
+    position: relative;
+}
+
+.c-searchBar__inputContainer input {
+    width: 175px;
+    margin-right: 10px;
+}
+
+.c-searchBar__inputContainer button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.c-bottomBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 25px;
+    width: 100%;
+    font-size: 13px;
+}
+
+.c-bottomBar__lastUpdate {
+    float: right;
+}
+
+[class*="c-alert"] {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 150px;
+    text-align: center;
+    padding: 0;
+}
+
+[class*="c-alert"] [class*="icon"] {
+    font-size: 100px;
+}
