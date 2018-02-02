@@ -5,6 +5,9 @@
 
 Its a small tray aplication created for Windows running machines.
 
+<p align="center">
+<img src="https://raw.githubusercontent.com/Stachuu87/WinAir/master/screenshots/WinAir.png" align="center" height="350px">
+</p>
 
 ## Installation
 
