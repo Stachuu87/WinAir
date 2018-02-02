@@ -9,7 +9,7 @@ Its a small tray aplication created for Windows running machines.
 ## Installation
 
 There is no need to install it at all. Simply download the latest aplication release from<a href="https://github.com/Stachuu87/winair/releases" target="_blank"> HERE </a>and save it whereever You want.
-After that just run WinAir.exe file.
+After that just unzip it and run WinAir.exe file.
 
 **Note:** App automaticly will add itself to system autostart. If You wish to switch it off, just go to `Task Manager` and set the autostart to `Disabled`.
 
