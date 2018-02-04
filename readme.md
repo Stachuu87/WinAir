@@ -1,7 +1,7 @@
 [![GitHub release][badge-github-pre-release]][winair-latest-release]
 [![Downloads total][badge-downloads-total]][winair-latest-release]
 
-**Note:** FOR ENGLISH PLEASE SCROLL DOWN THE DOCUEMNT
+**Note:** FOR ENGLISH PLEASE SCROLL DOWN THE DOCUMENT
 
 # WinAir
 
