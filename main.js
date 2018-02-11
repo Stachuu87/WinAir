@@ -16,7 +16,7 @@ let windowW = 350;
 let windowH = 550;
 
 process.env.GOOGLE_API_KEY = apikeys.googleAuto;
-process.env.NODE_ENV = settings.environment;;
+process.env.NODE_ENV = settings.environment;
 
 app.on('ready', () => {
 
