@@ -4,27 +4,37 @@ const apikeys = require('./app/keys');
 const messages = require('./app/messages');
 const balloonNotifications = require('./app/balloonNotifications');
 const settings = require('./app/settings');
+const fsHandle = require('./app/fsHandle');
 
 let tray = null;
 let window = null;
-let x = 0;
-let y = 0;
-let frames = false;
-let airQuality = 0;
 let lastQual = 0;
-let windowW = 350;
-let windowH = 550;
+let airQuality = 0;
+
+const windowSettings = { 
+    show: false,
+    resizable: false,
+    x: 0,
+    y: 0,
+    frame: false,
+    width: 350,
+    height: 550,
+    maxWidth: 350,
+    maxHeight: 550,
+    allwaysOnTop: false,
+    minimizable: true
+}
 
 process.env.GOOGLE_API_KEY = apikeys.googleAuto;
 process.env.NODE_ENV = settings.environment;;
 
 app.on('ready', () => {
 
-    const {screen} = require('electron');
-
-    tray = new Tray(`${__dirname}/assets/icons/icon.ico`);
-    window = new BrowserWindow({show: false, frame: frames, resizable: false, width: windowW, height: windowH, maxHeight:550, maxWidth:350, x:x, y:y, alwaysOnTop: false, minimizable: true});
+    tray = new Tray(`${__dirname}/assets/icons/icon.ico`); 
+    window = new BrowserWindow(windowSettings);
     window.loadURL(`file://${__dirname}/main.html`);
+
+    fsHandle.readConf();
 
     ipcMain.on('response:quality', (e, item) => {
         airQuality = item;
@@ -58,11 +68,13 @@ app.on('ready', () => {
     };
 
     displayBalloonNotification = () => {
-        if(lastQual == 0) {
-            setBalloonContent(balloonNotifications.title, balloonNotifications.dataReceived);
-        } else if(airQuality == 0) {
-        } else if(lastQual != airQuality) {
-            setBalloonContent(balloonNotifications.title, balloonNotifications.airQualityChanged);
+        if(process.winair.config.notification == "on") {
+            if(lastQual == 0) {
+                setBalloonContent(balloonNotifications.title, balloonNotifications.dataReceived);
+            } else if(airQuality == 0) {
+            } else if(lastQual != airQuality) {
+                setBalloonContent(balloonNotifications.title, balloonNotifications.airQualityChanged);
+            }
         }
     }
 
@@ -76,8 +88,8 @@ app.on('ready', () => {
         const {width, height} = display.workAreaSize;
         const boundsX = display.bounds.x;
         const boundsY = display.bounds.y;
-        const windowPosX = boundsX + width - windowW - 3;
-        const windowPosY = boundsY + height - windowH;
+        const windowPosX = boundsX + width - windowSettings.width - 3;
+        const windowPosY = boundsY + height - windowSettings.height;
         window.setPosition(windowPosX, windowPosY);
     }
 
@@ -95,11 +107,13 @@ app.on('ready', () => {
 
     tray.on('click', () => {
         setWindowPosition();
+        process.winair.config.notifications = "off";
         window.isVisible() ? null : window.show();
     });
 
     window.on('blur', () => {
         if(process.env.NODE_ENV === 'production') {
+            process.winair.config.notifications = "on";
             window.hide();
         }
     });
