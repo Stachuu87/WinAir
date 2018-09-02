@@ -68,7 +68,7 @@ app.on('ready', () => {
     };
 
     displayBalloonNotification = () => {
-        if(process.winair.config.notification == "on") {
+        if(process.winair.config.notifications == "on") {
             if(lastQual == 0) {
                 setBalloonContent(balloonNotifications.title, balloonNotifications.dataReceived);
             } else if(airQuality == 0) {
@@ -112,8 +112,8 @@ app.on('ready', () => {
     });
 
     window.on('blur', () => {
+        process.winair.config.notifications = "on";
         if(process.env.NODE_ENV === 'production') {
-            process.winair.config.notifications = "on";
             window.hide();
         }
     });
